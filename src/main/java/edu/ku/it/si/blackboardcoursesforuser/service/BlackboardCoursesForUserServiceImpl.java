@@ -1,5 +1,7 @@
 package edu.ku.it.si.blackboardcoursesforuser.service;
 
+import itemLoot.ItemController;
+
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -20,9 +22,6 @@ import org.apache.rampart.handler.config.OutflowConfiguration;
 import org.apache.ws.security.WSPasswordCallback;
 import org.apache.ws.security.handler.WSHandlerConstants;
 
-import blackboard.data.content.Content;
-import blackboard.data.course.CourseMembership;
-import blackboard.persist.Id;
 import blackboard.persist.KeyNotFoundException;
 import blackboard.persist.PersistenceException;
 import edu.ku.it.si.bbcontextws.generated.ContextWSStub;
@@ -350,7 +349,7 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 			logger.debug("Course names found for classes " + username + " is enrolled in are " + courseTitles.toString());
 			
 			//columnVOs = createColumn(columnVOs, "daveTest"); // LINE THAT ADDS A COOLUMN WITH DESIRED NAME, after adding comment it to change grade to 99!
-			scoreVOs = generateGradableAttempts(scoreVOs, columnVOs);
+//			scoreVOs = generateGradableAttempts(scoreVOs, columnVOs);
 			
 			//deleteColumn(columnVOs, 3); // LINE THAT DELETS A COLUMN TAKES THE ARRAY OF COLUMNS AND THE LOCATION OF THE COLUMN
 			
@@ -360,18 +359,18 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 					if(scoreVOs[k].getColumnId().equals(columnVOs[j].getId()))
 						scoreNum.add(scoreVOs[k].getGrade());
 					if(scoreVOs[k].getGrade() == null)
-						changeGrade(scoreVOs[k], "53");
+						changeGrade(scoreVOs[k], "0");
 				}
 			}
-			publishGrades(scoreVOs, courseIds[0]);
+	//		publishGrades(scoreVOs, courseIds[0]);
 			
 		}
 		
 		
 		System.out.println(displayGrades(scoreNum));
+		ItemController itemCont = new ItemController();
+		itemCont.loadItems();
 		return scoreNum;
-
-		
 	}
 	
 	public void deleteColumn(ColumnVO[] col, int i) throws RemoteException{
@@ -453,7 +452,9 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 	public void changeGrade(ScoreVO score, String grade){
 		score.setGrade(grade);
 		score.setManualGrade(grade);
-		score.setManualScore(Double.parseDouble(grade));
+		if(!grade.isEmpty()){
+			score.setManualScore(Double.parseDouble(grade));
+		}
 	}
 	
 	public void publishColumns(SaveColumns save) throws RemoteException{

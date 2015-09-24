@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Items>
+         <Item>
+                 <name>PickAxe</name>
+                 <cost>875</cost>
+                 <usage>ONCE</usage>
+                 <type>EXAMS</type>
+         </Item>
+ </Items>
