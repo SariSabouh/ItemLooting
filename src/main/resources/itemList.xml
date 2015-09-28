@@ -3,7 +3,10 @@
          <Item>
                  <name>PickAxe</name>
                  <cost>875</cost>
-                 <usage>ONCE</usage>
+                 <duration>ONCE</duration>
                  <type>EXAMS</type>
+                 <attAffected>DUEDATE</attAffected>
+                 <supply>10</supply>
+                 <effectMagnitude>2</effectMagnitude>
          </Item>
  </Items>

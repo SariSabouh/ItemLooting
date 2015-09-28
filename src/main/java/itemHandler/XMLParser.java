@@ -1,4 +1,6 @@
-package itemLoot;
+package itemHandler;
+
+import itemHandler.Item.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,9 +12,6 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-import itemLoot.Item.ItemType;
-import itemLoot.Item.ItemUsage;
 
 public class XMLParser extends DefaultHandler {
 	private Item item;
@@ -54,23 +53,27 @@ public class XMLParser extends DefaultHandler {
 		}
 
 		else if (element.equals("cost")) {
-			item.setCost(Float.parseFloat(tmpValue));
+			item.setCost(Integer.parseInt(tmpValue));
+		}
+		
+		else if(element.equals("attAffected")){
+			item.setAttributeAffected(AttributeAffected.valueOf(tmpValue));
 		}
 
-		else if (element.equals("rarity")) {
-			item.setRarity(Float.parseFloat(tmpValue));
+		else if (element.equals("supply")) {
+			item.setSupply(Integer.parseInt(tmpValue));
 		}
 
-		else if (element.equals("amount")) {
+		else if (element.equals("effectMagnitude")) {
 			item.setAmount(Float.parseFloat(tmpValue));
 		}
 
 		else if (element.equals("type")) {
-			item.setType(ItemType.valueOf(tmpValue));
+			item.setType(AssessmentType.valueOf(tmpValue));
 		}
 
-		else if (element.equals("usage")) {
-			item.setUsage(ItemUsage.valueOf(tmpValue));
+		else if (element.equals("duration")) {
+			item.setDuration(Integer.parseInt(tmpValue));
 		}
 	}
 

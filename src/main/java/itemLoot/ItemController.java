@@ -1,6 +1,10 @@
 package itemLoot;
 
+import itemHandler.Item;
+import itemHandler.XMLParser;
+
 import java.util.ArrayList;
+
 
 public class ItemController {
 
@@ -10,5 +14,6 @@ public class ItemController {
 		XMLParser xml = new XMLParser();
 		itemList = xml.getItemsList();
 		System.out.println(itemList.get(0).getName());
+		
 	}	
 }
