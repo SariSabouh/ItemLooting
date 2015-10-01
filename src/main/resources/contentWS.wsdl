@@ -1,0 +1,1362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://content.ws.blackboard/" xmlns:ns2="http://content.ws.blackboard" xmlns:ns1="http://content.ws.blackboard/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.platform.blackboard/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://content.ws.blackboard/">
+    <wsdl:types>
+        <xs:schema xmlns:ax25="http://ws.platform.blackboard/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.platform.blackboard/xsd">
+            <xs:complexType name="VersionVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="version" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CourseIdVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="externalId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax26="http://content.ws.blackboard/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://content.ws.blackboard/xsd">
+            <xs:complexType name="AggregateReviewStatusVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="reviewableCount" type="xs:int"/>
+                    <xs:element minOccurs="0" name="reviewedCount" type="xs:int"/>
+                    <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ContentFileMetadataVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fileAction" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="fileSize" nillable="true" type="xs:double"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="linkName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="parentId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="storageType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="strName" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ContentStatusFilter">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="filterType" type="xs:int"/>
+                    <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ContentStatusVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="availGroup" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="membershipId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="passesRule" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="reviewed" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="reviewedDate" type="xs:long"/>
+                    <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ContentVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="allowGuests" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="allowObservers" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="body" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="contentHandler" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="described" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="endDate" type="xs:long"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="externalId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="gradebookColumnId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="groupContent" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="launchInNewWindow" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="lesson" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="offlineName" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="offlinePath" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="parentId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="position" type="xs:int"/>
+                    <xs:element minOccurs="0" name="reviewable" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="sequential" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="startDate" type="xs:long"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="titleColor" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="tracked" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="url" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ContentFilter">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="filterType" type="xs:int"/>
+                    <xs:element minOccurs="0" name="modifiedSinceDate" type="xs:long"/>
+                    <xs:element minOccurs="0" name="tocId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="CourseTOCVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="allowGuests" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="allowObservers" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="contentAvailable" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="contentEmpty" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="courseContentsId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="enabled" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="entryPoint" type="xs:boolean"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="internalHandle" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="label" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="launchInNewWindow" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="persistentLabel" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="position" type="xs:int"/>
+                    <xs:element minOccurs="0" name="tocTarget" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="url" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="LinkVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="available" type="xs:boolean"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="referredToId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="referredToType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="referrerId" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="referrerType" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ContentsReviewedVO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="expansionData" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="reviewDate" type="xs:long"/>
+                    <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ns="http://content.ws.blackboard" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://content.ws.blackboard">
+            <xs:element name="getServerVersion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="unused" nillable="true" type="ns0:VersionVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getServerVersionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns0:VersionVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getReviewStatusByCourseId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getReviewStatusByCourseIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:AggregateReviewStatusVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getContentFiles">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getContentFilesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:ContentFileMetadataVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFilteredCourseStatus">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="filter" nillable="true" type="ns1:ContentStatusFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFilteredCourseStatusResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:ContentStatusVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadContent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="course" nillable="true" type="ns0:CourseIdVO"/>
+                        <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loadContentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ns1:ContentVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFilteredContent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="filter" nillable="true" type="ns1:ContentFilter"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFilteredContentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:ContentVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTOCsByCourseId">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTOCsByCourseIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:CourseTOCVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getLinksByReferredToType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="referrerToType" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getLinksByReferredToTypeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:LinkVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getLinksByReferrerType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="referrerType" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getLinksByReferrerTypeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ns1:LinkVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initializeContentWS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ignore" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initializeContentWSResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initializeVersion2ContentWS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ignore" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initializeVersion2ContentWSResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeContent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="course" nillable="true" type="ns0:CourseIdVO"/>
+                        <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="removeContentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addContentFile">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="contentFile" nillable="true" type="ns1:ContentFileMetadataVO"/>
+                        <xs:element minOccurs="0" name="fileContents" nillable="true" type="xs:base64Binary"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addContentFileResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveContent">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="course" nillable="true" type="ns0:CourseIdVO"/>
+                        <xs:element minOccurs="0" name="content" nillable="true" type="ns1:ContentVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveContentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveContentsReviewed">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="vo" nillable="true" type="ns1:ContentsReviewedVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveContentsReviewedResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseTOC">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="vo" nillable="true" type="ns1:CourseTOCVO"/>
+                        <xs:element minOccurs="0" name="linkVO" nillable="true" type="ns1:LinkVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveCourseTOCResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveLink">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="link" nillable="true" type="ns1:LinkVO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="saveLinkResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateContentFileLinkName">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="contentId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="contentFileId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newLinkName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateContentFileLinkNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteContentFiles">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="contentFileIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteContentFilesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteContents">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="contentIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteContentsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseTOCs">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="tocIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCourseTOCsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteLinks">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="courseId" nillable="true" type="xs:string"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="linkIds" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteLinksResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRequiredEntitlements">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="method" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getRequiredEntitlementsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="deleteContentFilesRequest">
+        <wsdl:part name="parameters" element="ns2:deleteContentFiles"/>
+    </wsdl:message>
+    <wsdl:message name="deleteContentFilesResponse">
+        <wsdl:part name="parameters" element="ns2:deleteContentFilesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="initializeContentWSRequest">
+        <wsdl:part name="parameters" element="ns2:initializeContentWS"/>
+    </wsdl:message>
+    <wsdl:message name="initializeContentWSResponse">
+        <wsdl:part name="parameters" element="ns2:initializeContentWSResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateContentFileLinkNameRequest">
+        <wsdl:part name="parameters" element="ns2:updateContentFileLinkName"/>
+    </wsdl:message>
+    <wsdl:message name="updateContentFileLinkNameResponse">
+        <wsdl:part name="parameters" element="ns2:updateContentFileLinkNameResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveContentRequest">
+        <wsdl:part name="parameters" element="ns2:saveContent"/>
+    </wsdl:message>
+    <wsdl:message name="saveContentResponse">
+        <wsdl:part name="parameters" element="ns2:saveContentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getReviewStatusByCourseIdRequest">
+        <wsdl:part name="parameters" element="ns2:getReviewStatusByCourseId"/>
+    </wsdl:message>
+    <wsdl:message name="getReviewStatusByCourseIdResponse">
+        <wsdl:part name="parameters" element="ns2:getReviewStatusByCourseIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteContentsRequest">
+        <wsdl:part name="parameters" element="ns2:deleteContents"/>
+    </wsdl:message>
+    <wsdl:message name="deleteContentsResponse">
+        <wsdl:part name="parameters" element="ns2:deleteContentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="removeContentRequest">
+        <wsdl:part name="parameters" element="ns2:removeContent"/>
+    </wsdl:message>
+    <wsdl:message name="removeContentResponse">
+        <wsdl:part name="parameters" element="ns2:removeContentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveContentsReviewedRequest">
+        <wsdl:part name="parameters" element="ns2:saveContentsReviewed"/>
+    </wsdl:message>
+    <wsdl:message name="saveContentsReviewedResponse">
+        <wsdl:part name="parameters" element="ns2:saveContentsReviewedResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getContentFilesRequest">
+        <wsdl:part name="parameters" element="ns2:getContentFiles"/>
+    </wsdl:message>
+    <wsdl:message name="getContentFilesResponse">
+        <wsdl:part name="parameters" element="ns2:getContentFilesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getFilteredCourseStatusRequest">
+        <wsdl:part name="parameters" element="ns2:getFilteredCourseStatus"/>
+    </wsdl:message>
+    <wsdl:message name="getFilteredCourseStatusResponse">
+        <wsdl:part name="parameters" element="ns2:getFilteredCourseStatusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseTOCRequest">
+        <wsdl:part name="parameters" element="ns2:saveCourseTOC"/>
+    </wsdl:message>
+    <wsdl:message name="saveCourseTOCResponse">
+        <wsdl:part name="parameters" element="ns2:saveCourseTOCResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getTOCsByCourseIdRequest">
+        <wsdl:part name="parameters" element="ns2:getTOCsByCourseId"/>
+    </wsdl:message>
+    <wsdl:message name="getTOCsByCourseIdResponse">
+        <wsdl:part name="parameters" element="ns2:getTOCsByCourseIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getRequiredEntitlementsRequest">
+        <wsdl:part name="parameters" element="ns2:getRequiredEntitlements"/>
+    </wsdl:message>
+    <wsdl:message name="getRequiredEntitlementsResponse">
+        <wsdl:part name="parameters" element="ns2:getRequiredEntitlementsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getLinksByReferrerTypeRequest">
+        <wsdl:part name="parameters" element="ns2:getLinksByReferrerType"/>
+    </wsdl:message>
+    <wsdl:message name="getLinksByReferrerTypeResponse">
+        <wsdl:part name="parameters" element="ns2:getLinksByReferrerTypeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="initializeVersion2ContentWSRequest">
+        <wsdl:part name="parameters" element="ns2:initializeVersion2ContentWS"/>
+    </wsdl:message>
+    <wsdl:message name="initializeVersion2ContentWSResponse">
+        <wsdl:part name="parameters" element="ns2:initializeVersion2ContentWSResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseTOCsRequest">
+        <wsdl:part name="parameters" element="ns2:deleteCourseTOCs"/>
+    </wsdl:message>
+    <wsdl:message name="deleteCourseTOCsResponse">
+        <wsdl:part name="parameters" element="ns2:deleteCourseTOCsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteLinksRequest">
+        <wsdl:part name="parameters" element="ns2:deleteLinks"/>
+    </wsdl:message>
+    <wsdl:message name="deleteLinksResponse">
+        <wsdl:part name="parameters" element="ns2:deleteLinksResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addContentFileRequest">
+        <wsdl:part name="parameters" element="ns2:addContentFile"/>
+    </wsdl:message>
+    <wsdl:message name="addContentFileResponse">
+        <wsdl:part name="parameters" element="ns2:addContentFileResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveLinkRequest">
+        <wsdl:part name="parameters" element="ns2:saveLink"/>
+    </wsdl:message>
+    <wsdl:message name="saveLinkResponse">
+        <wsdl:part name="parameters" element="ns2:saveLinkResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServerVersionRequest">
+        <wsdl:part name="parameters" element="ns2:getServerVersion"/>
+    </wsdl:message>
+    <wsdl:message name="getServerVersionResponse">
+        <wsdl:part name="parameters" element="ns2:getServerVersionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getFilteredContentRequest">
+        <wsdl:part name="parameters" element="ns2:getFilteredContent"/>
+    </wsdl:message>
+    <wsdl:message name="getFilteredContentResponse">
+        <wsdl:part name="parameters" element="ns2:getFilteredContentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="loadContentRequest">
+        <wsdl:part name="parameters" element="ns2:loadContent"/>
+    </wsdl:message>
+    <wsdl:message name="loadContentResponse">
+        <wsdl:part name="parameters" element="ns2:loadContentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getLinksByReferredToTypeRequest">
+        <wsdl:part name="parameters" element="ns2:getLinksByReferredToType"/>
+    </wsdl:message>
+    <wsdl:message name="getLinksByReferredToTypeResponse">
+        <wsdl:part name="parameters" element="ns2:getLinksByReferredToTypeResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="Content.WSPortType">
+        <wsdl:operation name="deleteContentFiles">
+            <wsdl:input message="axis2:deleteContentFilesRequest" wsaw:Action="deleteContentFiles"/>
+            <wsdl:output message="axis2:deleteContentFilesResponse" wsaw:Action="http://content.ws.blackboard/Content/deleteContentFilesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="initializeContentWS">
+            <wsdl:input message="axis2:initializeContentWSRequest" wsaw:Action="initializeContentWS"/>
+            <wsdl:output message="axis2:initializeContentWSResponse" wsaw:Action="http://content.ws.blackboard/Content/initializeContentWSResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateContentFileLinkName">
+            <wsdl:input message="axis2:updateContentFileLinkNameRequest" wsaw:Action="updateContentFileLinkName"/>
+            <wsdl:output message="axis2:updateContentFileLinkNameResponse" wsaw:Action="http://content.ws.blackboard/Content/updateContentFileLinkNameResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveContent">
+            <wsdl:input message="axis2:saveContentRequest" wsaw:Action="saveContent"/>
+            <wsdl:output message="axis2:saveContentResponse" wsaw:Action="http://content.ws.blackboard/Content/saveContentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getReviewStatusByCourseId">
+            <wsdl:input message="axis2:getReviewStatusByCourseIdRequest" wsaw:Action="getReviewStatusByCourseId"/>
+            <wsdl:output message="axis2:getReviewStatusByCourseIdResponse" wsaw:Action="http://content.ws.blackboard/Content/getReviewStatusByCourseIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteContents">
+            <wsdl:input message="axis2:deleteContentsRequest" wsaw:Action="deleteContents"/>
+            <wsdl:output message="axis2:deleteContentsResponse" wsaw:Action="http://content.ws.blackboard/Content/deleteContentsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="removeContent">
+            <wsdl:input message="axis2:removeContentRequest" wsaw:Action="removeContent"/>
+            <wsdl:output message="axis2:removeContentResponse" wsaw:Action="http://content.ws.blackboard/Content/removeContentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveContentsReviewed">
+            <wsdl:input message="axis2:saveContentsReviewedRequest" wsaw:Action="saveContentsReviewed"/>
+            <wsdl:output message="axis2:saveContentsReviewedResponse" wsaw:Action="http://content.ws.blackboard/Content/saveContentsReviewedResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getContentFiles">
+            <wsdl:input message="axis2:getContentFilesRequest" wsaw:Action="getContentFiles"/>
+            <wsdl:output message="axis2:getContentFilesResponse" wsaw:Action="http://content.ws.blackboard/Content/getContentFilesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getFilteredCourseStatus">
+            <wsdl:input message="axis2:getFilteredCourseStatusRequest" wsaw:Action="getFilteredCourseStatus"/>
+            <wsdl:output message="axis2:getFilteredCourseStatusResponse" wsaw:Action="http://content.ws.blackboard/Content/getFilteredCourseStatusResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseTOC">
+            <wsdl:input message="axis2:saveCourseTOCRequest" wsaw:Action="saveCourseTOC"/>
+            <wsdl:output message="axis2:saveCourseTOCResponse" wsaw:Action="http://content.ws.blackboard/Content/saveCourseTOCResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getTOCsByCourseId">
+            <wsdl:input message="axis2:getTOCsByCourseIdRequest" wsaw:Action="getTOCsByCourseId"/>
+            <wsdl:output message="axis2:getTOCsByCourseIdResponse" wsaw:Action="http://content.ws.blackboard/Content/getTOCsByCourseIdResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getRequiredEntitlements">
+            <wsdl:input message="axis2:getRequiredEntitlementsRequest" wsaw:Action="getRequiredEntitlements"/>
+            <wsdl:output message="axis2:getRequiredEntitlementsResponse" wsaw:Action="http://content.ws.blackboard/Content/getRequiredEntitlementsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getLinksByReferrerType">
+            <wsdl:input message="axis2:getLinksByReferrerTypeRequest" wsaw:Action="getLinksByReferrerType"/>
+            <wsdl:output message="axis2:getLinksByReferrerTypeResponse" wsaw:Action="http://content.ws.blackboard/Content/getLinksByReferrerTypeResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="initializeVersion2ContentWS">
+            <wsdl:input message="axis2:initializeVersion2ContentWSRequest" wsaw:Action="initializeVersion2ContentWS"/>
+            <wsdl:output message="axis2:initializeVersion2ContentWSResponse" wsaw:Action="http://content.ws.blackboard/Content/initializeVersion2ContentWSResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseTOCs">
+            <wsdl:input message="axis2:deleteCourseTOCsRequest" wsaw:Action="deleteCourseTOCs"/>
+            <wsdl:output message="axis2:deleteCourseTOCsResponse" wsaw:Action="http://content.ws.blackboard/Content/deleteCourseTOCsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteLinks">
+            <wsdl:input message="axis2:deleteLinksRequest" wsaw:Action="deleteLinks"/>
+            <wsdl:output message="axis2:deleteLinksResponse" wsaw:Action="http://content.ws.blackboard/Content/deleteLinksResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addContentFile">
+            <wsdl:input message="axis2:addContentFileRequest" wsaw:Action="addContentFile"/>
+            <wsdl:output message="axis2:addContentFileResponse" wsaw:Action="http://content.ws.blackboard/Content/addContentFileResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveLink">
+            <wsdl:input message="axis2:saveLinkRequest" wsaw:Action="saveLink"/>
+            <wsdl:output message="axis2:saveLinkResponse" wsaw:Action="http://content.ws.blackboard/Content/saveLinkResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <wsdl:input message="axis2:getServerVersionRequest" wsaw:Action="getServerVersion"/>
+            <wsdl:output message="axis2:getServerVersionResponse" wsaw:Action="http://content.ws.blackboard/Content/getServerVersionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getFilteredContent">
+            <wsdl:input message="axis2:getFilteredContentRequest" wsaw:Action="getFilteredContent"/>
+            <wsdl:output message="axis2:getFilteredContentResponse" wsaw:Action="http://content.ws.blackboard/Content/getFilteredContentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="loadContent">
+            <wsdl:input message="axis2:loadContentRequest" wsaw:Action="loadContent"/>
+            <wsdl:output message="axis2:loadContentResponse" wsaw:Action="http://content.ws.blackboard/Content/loadContentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getLinksByReferredToType">
+            <wsdl:input message="axis2:getLinksByReferredToTypeRequest" wsaw:Action="getLinksByReferredToType"/>
+            <wsdl:output message="axis2:getLinksByReferredToTypeResponse" wsaw:Action="http://content.ws.blackboard/Content/getLinksByReferredToTypeResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="Content.WSSOAP11Binding" type="axis2:Content.WSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="deleteContentFiles">
+            <soap:operation soapAction="deleteContentFiles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeContentWS">
+            <soap:operation soapAction="initializeContentWS" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateContentFileLinkName">
+            <soap:operation soapAction="updateContentFileLinkName" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveContent">
+            <soap:operation soapAction="saveContent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReviewStatusByCourseId">
+            <soap:operation soapAction="getReviewStatusByCourseId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteContents">
+            <soap:operation soapAction="deleteContents" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeContent">
+            <soap:operation soapAction="removeContent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveContentsReviewed">
+            <soap:operation soapAction="saveContentsReviewed" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getContentFiles">
+            <soap:operation soapAction="getContentFiles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getFilteredCourseStatus">
+            <soap:operation soapAction="getFilteredCourseStatus" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseTOC">
+            <soap:operation soapAction="saveCourseTOC" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTOCsByCourseId">
+            <soap:operation soapAction="getTOCsByCourseId" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getRequiredEntitlements">
+            <soap:operation soapAction="getRequiredEntitlements" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLinksByReferrerType">
+            <soap:operation soapAction="getLinksByReferrerType" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeVersion2ContentWS">
+            <soap:operation soapAction="initializeVersion2ContentWS" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseTOCs">
+            <soap:operation soapAction="deleteCourseTOCs" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteLinks">
+            <soap:operation soapAction="deleteLinks" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addContentFile">
+            <soap:operation soapAction="addContentFile" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveLink">
+            <soap:operation soapAction="saveLink" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <soap:operation soapAction="getServerVersion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getFilteredContent">
+            <soap:operation soapAction="getFilteredContent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadContent">
+            <soap:operation soapAction="loadContent" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLinksByReferredToType">
+            <soap:operation soapAction="getLinksByReferredToType" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="Content.WSSOAP12Binding" type="axis2:Content.WSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="deleteContentFiles">
+            <soap12:operation soapAction="deleteContentFiles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeContentWS">
+            <soap12:operation soapAction="initializeContentWS" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateContentFileLinkName">
+            <soap12:operation soapAction="updateContentFileLinkName" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveContent">
+            <soap12:operation soapAction="saveContent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReviewStatusByCourseId">
+            <soap12:operation soapAction="getReviewStatusByCourseId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteContents">
+            <soap12:operation soapAction="deleteContents" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeContent">
+            <soap12:operation soapAction="removeContent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveContentsReviewed">
+            <soap12:operation soapAction="saveContentsReviewed" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getContentFiles">
+            <soap12:operation soapAction="getContentFiles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getFilteredCourseStatus">
+            <soap12:operation soapAction="getFilteredCourseStatus" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseTOC">
+            <soap12:operation soapAction="saveCourseTOC" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTOCsByCourseId">
+            <soap12:operation soapAction="getTOCsByCourseId" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getRequiredEntitlements">
+            <soap12:operation soapAction="getRequiredEntitlements" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLinksByReferrerType">
+            <soap12:operation soapAction="getLinksByReferrerType" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeVersion2ContentWS">
+            <soap12:operation soapAction="initializeVersion2ContentWS" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseTOCs">
+            <soap12:operation soapAction="deleteCourseTOCs" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteLinks">
+            <soap12:operation soapAction="deleteLinks" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addContentFile">
+            <soap12:operation soapAction="addContentFile" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveLink">
+            <soap12:operation soapAction="saveLink" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <soap12:operation soapAction="getServerVersion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getFilteredContent">
+            <soap12:operation soapAction="getFilteredContent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadContent">
+            <soap12:operation soapAction="loadContent" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLinksByReferredToType">
+            <soap12:operation soapAction="getLinksByReferredToType" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="Content.WSHttpBinding" type="axis2:Content.WSPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="deleteContentFiles">
+            <http:operation location="Content.WS/deleteContentFiles"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteContentFiles"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteContentFiles"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeContentWS">
+            <http:operation location="Content.WS/initializeContentWS"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="initializeContentWS"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="initializeContentWS"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateContentFileLinkName">
+            <http:operation location="Content.WS/updateContentFileLinkName"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="updateContentFileLinkName"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="updateContentFileLinkName"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveContent">
+            <http:operation location="Content.WS/saveContent"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveContent"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveContent"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getReviewStatusByCourseId">
+            <http:operation location="Content.WS/getReviewStatusByCourseId"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getReviewStatusByCourseId"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getReviewStatusByCourseId"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteContents">
+            <http:operation location="Content.WS/deleteContents"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteContents"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteContents"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="removeContent">
+            <http:operation location="Content.WS/removeContent"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="removeContent"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="removeContent"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveContentsReviewed">
+            <http:operation location="Content.WS/saveContentsReviewed"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveContentsReviewed"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveContentsReviewed"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getContentFiles">
+            <http:operation location="Content.WS/getContentFiles"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getContentFiles"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getContentFiles"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getFilteredCourseStatus">
+            <http:operation location="Content.WS/getFilteredCourseStatus"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getFilteredCourseStatus"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getFilteredCourseStatus"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveCourseTOC">
+            <http:operation location="Content.WS/saveCourseTOC"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveCourseTOC"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveCourseTOC"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTOCsByCourseId">
+            <http:operation location="Content.WS/getTOCsByCourseId"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getTOCsByCourseId"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getTOCsByCourseId"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getRequiredEntitlements">
+            <http:operation location="Content.WS/getRequiredEntitlements"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getRequiredEntitlements"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getRequiredEntitlements"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLinksByReferrerType">
+            <http:operation location="Content.WS/getLinksByReferrerType"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getLinksByReferrerType"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getLinksByReferrerType"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initializeVersion2ContentWS">
+            <http:operation location="Content.WS/initializeVersion2ContentWS"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="initializeVersion2ContentWS"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="initializeVersion2ContentWS"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteCourseTOCs">
+            <http:operation location="Content.WS/deleteCourseTOCs"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteCourseTOCs"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteCourseTOCs"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteLinks">
+            <http:operation location="Content.WS/deleteLinks"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="deleteLinks"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="deleteLinks"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addContentFile">
+            <http:operation location="Content.WS/addContentFile"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="addContentFile"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="addContentFile"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="saveLink">
+            <http:operation location="Content.WS/saveLink"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="saveLink"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="saveLink"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getServerVersion">
+            <http:operation location="Content.WS/getServerVersion"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getServerVersion"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getServerVersion"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getFilteredContent">
+            <http:operation location="Content.WS/getFilteredContent"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getFilteredContent"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getFilteredContent"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="loadContent">
+            <http:operation location="Content.WS/loadContent"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="loadContent"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="loadContent"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getLinksByReferredToType">
+            <http:operation location="Content.WS/getLinksByReferredToType"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="getLinksByReferredToType"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="getLinksByReferredToType"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Content.WS">
+        <wsdl:port name="Content.WSSOAP11port_http" binding="axis2:Content.WSSOAP11Binding">
+            <soap:address location="http://205.174.62.96:80/webapps/ws/services/Content.WS"/>
+        </wsdl:port>
+        <wsdl:port name="Content.WSSOAP12port_http" binding="axis2:Content.WSSOAP12Binding">
+            <soap12:address location="http://205.174.62.96:80/webapps/ws/services/Content.WS"/>
+        </wsdl:port>
+        <wsdl:port name="Content.WSHttpport" binding="axis2:Content.WSHttpBinding">
+            <http:address location="http://205.174.62.96:80/webapps/ws/services/Content.WS"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -24,6 +24,14 @@ import org.apache.ws.security.handler.WSHandlerConstants;
 
 import blackboard.persist.KeyNotFoundException;
 import blackboard.persist.PersistenceException;
+import edu.ku.it.si.bbcontent.generated.ContentWSStub;
+import edu.ku.it.si.bbcontent.generated.ContentWSStub.ContentFilter;
+import edu.ku.it.si.bbcontent.generated.ContentWSStub.ContentVO;
+import edu.ku.it.si.bbcontent.generated.ContentWSStub.CourseTOCVO;
+import edu.ku.it.si.bbcontent.generated.ContentWSStub.GetFilteredContent;
+import edu.ku.it.si.bbcontent.generated.ContentWSStub.GetFilteredContentResponse;
+import edu.ku.it.si.bbcontent.generated.ContentWSStub.GetTOCsByCourseId;
+import edu.ku.it.si.bbcontent.generated.ContentWSStub.GetTOCsByCourseIdResponse;
 import edu.ku.it.si.bbcontextws.generated.ContextWSStub;
 import edu.ku.it.si.bbcontextws.generated.ContextWSStub.CourseIdVO;
 import edu.ku.it.si.bbcontextws.generated.ContextWSStub.GetMemberships;
@@ -63,6 +71,7 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 
 	private static final Logger logger = Logger.getLogger(BlackboardCoursesForUserServiceImpl.class.getName() );
 	GradebookWSStub gradebookWSStub;
+	String [] courseIds;
 
 	@Override
 	public List<String> getBlackboardCoursesForUser(String modulePath, String blackboardServerURL,
@@ -97,15 +106,18 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 		
 		ServiceClient client = contextWSStub._getServiceClient();
 		ServiceClient client2 = contextWSStub._getServiceClient();
+		ServiceClient contentClient = contextWSStub._getServiceClient();
 
 		Options options = client.getOptions();
 		Options options2 = client.getOptions();
+		Options contentOptions = client.getOptions();
 
 		options.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
 				HTTPConstants.HEADER_PROTOCOL_10);
 		options2.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
 				HTTPConstants.HEADER_PROTOCOL_10);
-		
+		contentOptions.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
+				HTTPConstants.HEADER_PROTOCOL_10);
 		/*
 		 * STEP 2:  Setup the Web Service - Security settings
 		 */
@@ -206,7 +218,7 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
              *is a Course id value
              */
 			
-			String [] courseIds = new String[courseIdVOs.length];
+			courseIds = new String[courseIdVOs.length];
 			
 			int i = 0;
 			
@@ -217,22 +229,6 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 				i++;
 				
 			}
-//			Id courseID = 
-//			System.out.println(courseID.toString());
-			/*List <CourseMembership> cmlist = CourseMembershipDbLoader.Default.getInstance().loadByCourseIdAndRole(courseID, CourseMembership.Role.STUDENT, null, true);
-			Iterator<CourseMembership> students = cmlist.iterator();
-			students = cmlist.iterator();
-			String currentUserID = "";
-			while(students.hasNext()){
-				CourseMembership cm = (CourseMembership) students.next();
-				currentUserID = cm.getUserId().toString();	
-				String lastName = cm.getUser().getFamilyName();
-				String external = cm.getUserId().toExternalString();
-				String[] parts = external.split("_");
-				String externalParsed = parts[1];
-				System.out.println("<option value='" + externalParsed + "'>" + lastName + "</option>");
-			}*/
-			
 			/*
 			 * Create a GetCourse object that is used
 			 * to specify how we want the Course web
@@ -275,20 +271,26 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 			 */
 			CourseWSStub courseWSStub = new CourseWSStub(ctx,
 					"http://" + blackboardServerURL + "/webapps/ws/services/Course.WS");
+			ContentWSStub contentWSStub = new ContentWSStub(ctx,
+					"http://" + blackboardServerURL + "/webapps/ws/services/Content.WS");
 			gradebookWSStub = new GradebookWSStub(ctx,
 					"http://" + blackboardServerURL + "/webapps/ws/services/Gradebook.WS");
 
 			client = courseWSStub._getServiceClient();
 			client2 = gradebookWSStub._getServiceClient();
+			contentClient = contentWSStub._getServiceClient();
+			
 
 			options = client.getOptions();
 			options2 = client2.getOptions();
+			contentOptions = contentClient.getOptions();
 
 			options.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
 					HTTPConstants.HEADER_PROTOCOL_10);
 			options2.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
 					HTTPConstants.HEADER_PROTOCOL_10);
-			
+			contentOptions.setProperty(HTTPConstants.HTTP_PROTOCOL_VERSION,
+					HTTPConstants.HEADER_PROTOCOL_10);
 			/*
 			 * STEP 9 - Setup the WS-Security for the request to this web service
 			 * NOTE that we will re-use the same callback handler (with its session ID)
@@ -299,6 +301,7 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 			// Reuse the same callback handler
 			options.setProperty(WSHandlerConstants.PW_CALLBACK_REF, pwcb);
 			options2.setProperty(WSHandlerConstants.PW_CALLBACK_REF, pwcb);
+			contentOptions.setProperty(WSHandlerConstants.PW_CALLBACK_REF, pwcb);
 			ofc = new OutflowConfiguration();
 			ofc.setActionItems("UsernameToken Timestamp");
 			ofc.setUser("session");
@@ -308,8 +311,11 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 					.getProperty());
 			options2.setProperty(WSSHandlerConstants.OUTFLOW_SECURITY, ofc
 					.getProperty());
+			contentOptions.setProperty(WSSHandlerConstants.OUTFLOW_SECURITY, ofc
+					.getProperty());
 			client.engageModule("rampart");
 			client2.engageModule("rampart");
+			contentClient.engageModule("rampart");
 			
 			/*
 			 * STEP 10 - make the request to this web service
@@ -364,12 +370,38 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 			}
 	//		publishGrades(scoreVOs, courseIds[0]);
 			
+			ContentFilter contentFilter = new ContentFilter();
+			GetTOCsByCourseId getTOcs = new GetTOCsByCourseId();
+			getTOcs.setCourseId(courseIds[0]);
+			GetTOCsByCourseIdResponse tocResponse = contentWSStub.getTOCsByCourseId(getTOcs);
+			CourseTOCVO[] courseTOCVO = tocResponse.get_return();
+			String id = "";
+			for(CourseTOCVO course: courseTOCVO){
+				if(course.getLabel().equals("Content")){
+					id = course.getId();
+				}
+			}
+			contentFilter.setTocId(id);
+			contentFilter.setFilterType(10);
+			GetFilteredContent getContentFilter = new GetFilteredContent();
+			getContentFilter.setCourseId(courseIds[0]);
+			getContentFilter.setFilter(contentFilter);
+			GetFilteredContentResponse getFilteredContentResponse = contentWSStub.getFilteredContent(getContentFilter);
+			ContentVO[] contents = getFilteredContentResponse.get_return();
+			ItemController itemCont = new ItemController();
+			ContentVO itemList = null;
+			for(ContentVO content : contents){
+				if(content.getTitle().equals("itemList")){
+					itemList = content;
+					break;
+				}
+			}
+			itemCont.createItemListFromContents(itemList);
+			itemCont.loadItems();
 		}
 		
 		
 		System.out.println(displayGrades(scoreNum));
-		ItemController itemCont = new ItemController();
-		itemCont.loadItems();
 		return scoreNum;
 	}
 	

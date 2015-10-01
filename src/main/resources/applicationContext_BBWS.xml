@@ -64,6 +64,29 @@
 			<value>CourseMembership.WS:initializeCourseMembershipWS</value>
 			<value>CourseMembership.WS:saveCourseMembership</value>
 			<value>CourseMembership.WS:saveGroupMembership</value>
+			<value>Content.WS:deleteContentFiles</value>
+			<value>Content.WS:initializeContentWS</value>
+			<value>Content.WS:updateContentFileLinkName</value>
+			<value>Content.WS:saveContnet</value>
+			<value>Content.WS:getReviewStatusByCourseId</value>
+			<value>Content.WS:deleteContents</value>
+			<value>Content.WS:removeContent</value>
+			<value>Content.WS:saveContentsReviewd</value>
+			<value>Content.WS:getContentFiles</value>
+			<value>Content.WS:getFilteredCourseStatus</value>
+			<value>Content.WS:saveCourseTOC</value>
+			<value>Content.WS:getTOCsByCourseId</value>
+			<value>Content.WS:getRequiredEntitlements</value>
+			<value>Content.WS:getLinksByReferrerType</value>
+			<value>Content.WS:initializeVersion2ContentWS</value>
+			<value>Content.WS:deleteCourseTOCs</value>
+			<value>Content.WS:deleteLinks</value>
+			<value>Content.WS:addContentFile</value>
+			<value>Content.WS:saveLink</value>
+			<value>Content.WS:getServerVersion</value>
+			<value>Content.WS:getFilteredContent</value>
+			<value>Content.WS:loadContent</value>
+			<value>Content.WS:getLinksByReferredToType</value>
    		</list>
    	</property>
    	

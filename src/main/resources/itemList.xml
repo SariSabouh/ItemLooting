@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Items>
-         <Item>
-                 <name>PickAxe</name>
-                 <cost>875</cost>
-                 <duration>ONCE</duration>
-                 <type>EXAMS</type>
-                 <attAffected>DUEDATE</attAffected>
-                 <supply>10</supply>
-                 <effectMagnitude>2</effectMagnitude>
-         </Item>
- </Items>
+<items>
+	<item>
+		<name>PickAxe</name>
+		<cost>875</cost>
+		<duration>0</duration>
+		<type>EXAMS</type>
+		<attAffected>DUEDATE</attAffected>
+		<supply>10</supply>
+		<effectMagnitude>2</effectMagnitude>
+	</item>
+	<item>
+		<name>LongSword</name>
+		<cost>115</cost>
+		<duration>55</duration>
+		<type>ALL</type>
+		<attAffected>DUEDATE</attAffected>
+		<supply>1</supply>
+		<effectMagnitude>2</effectMagnitude>
+	</item>
+</items>
