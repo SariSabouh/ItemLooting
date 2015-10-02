@@ -381,8 +381,8 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 					id = course.getId();
 				}
 			}
-			contentFilter.setTocId(id);
-			contentFilter.setFilterType(10);
+			contentFilter.setContentId(id);
+			contentFilter.setFilterType(1);
 			GetFilteredContent getContentFilter = new GetFilteredContent();
 			getContentFilter.setCourseId(courseIds[0]);
 			getContentFilter.setFilter(contentFilter);
