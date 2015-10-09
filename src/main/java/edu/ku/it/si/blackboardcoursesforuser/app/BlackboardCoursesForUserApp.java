@@ -24,7 +24,7 @@ import edu.ku.it.si.blackboardcoursesforuser.controller.BlackboardCoursesForUser
 public class BlackboardCoursesForUserApp {
 
 	ApplicationContext ctx = new ClassPathXmlApplicationContext(
-	   "applicationContext_BlackboardCoursesForUser.xml");
+	   "../resources/applicationContext_BlackboardCoursesForUser.xml");
 		
 		BlackboardCoursesForUserController blackboardCoursesForUserController;
 

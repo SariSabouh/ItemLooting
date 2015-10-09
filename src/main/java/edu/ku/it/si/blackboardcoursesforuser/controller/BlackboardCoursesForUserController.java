@@ -3,7 +3,6 @@ package edu.ku.it.si.blackboardcoursesforuser.controller;
 import itemLoot.ItemController;
 
 import java.rmi.RemoteException;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 

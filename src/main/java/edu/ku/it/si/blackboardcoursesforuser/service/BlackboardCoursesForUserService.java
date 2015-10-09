@@ -6,7 +6,6 @@ package edu.ku.it.si.blackboardcoursesforuser.service;
 import itemLoot.ItemController;
 
 import java.rmi.RemoteException;
-import java.util.List;
 
 import blackboard.persist.KeyNotFoundException;
 import blackboard.persist.PersistenceException;

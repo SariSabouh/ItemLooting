@@ -7,9 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.ku.it.si.bbcontent.generated.ContentWSStub.ContentVO;
-
-
 
 public class ItemController {
 
@@ -24,12 +21,12 @@ public class ItemController {
 		return itemList;
 	}
 	
-	public void createItemListFromContents(ContentVO content){
+	public void createItemListFromContents(String content){
 		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\r";
 		String value = "";
 		boolean newItem = false;
 		xml += "<items>\n\r";
-		String[] lines = content.getBody().split("\\r?\\n");
+		String[] lines = content.split("\\r?\\n");
 		for(String line : lines){
 			if(line.equals("--")){
 				if(newItem){

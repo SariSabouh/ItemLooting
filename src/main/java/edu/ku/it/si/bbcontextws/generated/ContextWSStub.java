@@ -13,7 +13,7 @@
         *  ContextWSStub java implementation
         */
 
-        
+        @SuppressWarnings("all")
         public class ContextWSStub extends org.apache.axis2.client.Stub
         {
         protected org.apache.axis2.description.AxisOperation[] _operations;
@@ -2461,7 +2461,7 @@
                     //make the fault by reflection
                     try{
                         java.lang.String exceptionClassName = (java.lang.String)faultExceptionClassNameMap.get(faultElt.getQName());
-                        java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
+						java.lang.Class exceptionClass = java.lang.Class.forName(exceptionClassName);
                         java.lang.Exception ex=
                                 (java.lang.Exception) exceptionClass.newInstance();
                         //message class
@@ -4752,7 +4752,7 @@
         }
            
           
-        public static class VersionVO
+		public static class VersionVO
         implements org.apache.axis2.databinding.ADBBean{
         /* This type was generated from the piece of schema that had
                 name = VersionVO

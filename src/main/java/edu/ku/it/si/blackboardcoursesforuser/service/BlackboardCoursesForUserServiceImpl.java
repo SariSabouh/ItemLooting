@@ -397,7 +397,7 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 					break;
 				}
 			}
-			itemContr.createItemListFromContents(itemList);
+			itemContr.createItemListFromContents(itemList.getBody());
 			itemContr.loadItems();
 		}
 		
