@@ -1,5 +1,7 @@
 package edu.ku.it.si.blackboardcoursesforuser.app;
 
+import itemLoot.ItemController;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -25,28 +27,17 @@ public class BlackboardCoursesForUserApp {
 	   "applicationContext_BlackboardCoursesForUser.xml");
 		
 		BlackboardCoursesForUserController blackboardCoursesForUserController;
-		
-		/**
-		 * @param args
-		 * @throws PersistenceException 
-		 * @throws KeyNotFoundException 
-		 */
-		public static void main(String[] args) throws KeyNotFoundException, PersistenceException {
 
-					
-			BlackboardCoursesForUserApp app = new BlackboardCoursesForUserApp();
-			
-			app.run();
-		
-		}
-
-		private void run() throws KeyNotFoundException, PersistenceException {
-			
-			
+		public ItemController run() {			
 			blackboardCoursesForUserController = (BlackboardCoursesForUserController) ctx.getBean("blackboardCoursesForUserController");
 			
-			blackboardCoursesForUserController.getBlackboardCoursesForUser() ;
+			try {
+				return blackboardCoursesForUserController.getBlackboardCoursesForUser() ;
+			} catch (KeyNotFoundException e) {
+			} catch (PersistenceException e) {
+			}
 			
+			return null;
 			
 		}
 

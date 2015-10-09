@@ -1,5 +1,7 @@
 package edu.ku.it.si.blackboardcoursesforuser.controller;
 
+import itemLoot.ItemController;
+
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -52,13 +54,16 @@ public class BlackboardCoursesForUserController {
 	 * @throws PersistenceException 
 	 * @throws KeyNotFoundException 
 	 */
-	public void getBlackboardCoursesForUser() throws KeyNotFoundException, PersistenceException {
+	public ItemController getBlackboardCoursesForUser() throws KeyNotFoundException, PersistenceException {
+		
+		ItemController itemContr = null;
 		
 		try {
 			
-			List<String> courseTitles = blackboardCoursesForUserService.getBlackboardCoursesForUser(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId, username) ;
+			itemContr = blackboardCoursesForUserService.getBlackboardCoursesForUser(modulePath, blackboardServerURL, sharedSecret, clientVendorId, clientProgramId, username) ;
 	
-		    logger.info("The grades for user " + getUsername() + " in this class are: " + courseTitles);
+//		    logger.info("The grades for user " + getUsername() + " in this class are: " + courseTitles);
+			
 		
 		} catch (RemoteException e) {
 			
@@ -66,7 +71,7 @@ public class BlackboardCoursesForUserController {
 			
 		}
 		
-		
+		return itemContr;
 		
 	}
 	

@@ -23,7 +23,7 @@ public class XMLParser extends DefaultHandler {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try {
 			SAXParser parser = factory.newSAXParser();
-			parser.parse("./src/main/resources/itemList.xml", this);
+			parser.parse("./resources/itemList.xml", this);
 		} catch (ParserConfigurationException e) {
 			System.out.println("ParserConfig error");
 		} catch (SAXException e) {

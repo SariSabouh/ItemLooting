@@ -62,7 +62,7 @@ public class Item extends MarketPlaceItem{
 		return cost;
 	}
 
-	public float getRarity() {
+	public float getSupply() {
 		return supply;
 	}
 
@@ -76,5 +76,12 @@ public class Item extends MarketPlaceItem{
 
 	public void setAttributeAffected(AttributeAffected attributeAffected) {
 		this.attributeAffected = attributeAffected;
+	}
+	
+	@Override
+	public String toString(){
+		String output = "Item Name: " + name
+				+ "\nItem Cost: " + cost;
+		return output;
 	}
 }

@@ -3,6 +3,8 @@
  */
 package edu.ku.it.si.blackboardcoursesforuser.service;
 
+import itemLoot.ItemController;
+
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public interface BlackboardCoursesForUserService {
 	 * @throws PersistenceException 
 	 * @throws KeyNotFoundException 
 	 */
-	public List<String> getBlackboardCoursesForUser(String modulePath, String blackboardServerURL, 
+	public ItemController getBlackboardCoursesForUser(String modulePath, String blackboardServerURL, 
 			String sharedSecret, String vendorId, 
 			String clientProgramId, String username) throws RemoteException, KeyNotFoundException, PersistenceException;
 	 

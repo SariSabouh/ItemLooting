@@ -72,9 +72,10 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 	private static final Logger logger = Logger.getLogger(BlackboardCoursesForUserServiceImpl.class.getName() );
 	GradebookWSStub gradebookWSStub;
 	String [] courseIds;
-
+	private ItemController itemContr;
+	
 	@Override
-	public List<String> getBlackboardCoursesForUser(String modulePath, String blackboardServerURL,
+	public ItemController getBlackboardCoursesForUser(String modulePath, String blackboardServerURL,
 			String sharedSecret, String vendorId, String clientProgramId, String username)
 			throws RemoteException, KeyNotFoundException, PersistenceException {
 		
@@ -388,7 +389,7 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 			getContentFilter.setFilter(contentFilter);
 			GetFilteredContentResponse getFilteredContentResponse = contentWSStub.getFilteredContent(getContentFilter);
 			ContentVO[] contents = getFilteredContentResponse.get_return();
-			ItemController itemCont = new ItemController();
+			itemContr = new ItemController();
 			ContentVO itemList = null;
 			for(ContentVO content : contents){
 				if(content.getTitle().equals("itemList")){
@@ -396,13 +397,13 @@ public class BlackboardCoursesForUserServiceImpl implements BlackboardCoursesFor
 					break;
 				}
 			}
-			itemCont.createItemListFromContents(itemList);
-			itemCont.loadItems();
+			itemContr.createItemListFromContents(itemList);
+			itemContr.loadItems();
 		}
 		
 		
 		System.out.println(displayGrades(scoreNum));
-		return scoreNum;
+		return itemContr;
 	}
 	
 	public void deleteColumn(ColumnVO[] col, int i) throws RemoteException{

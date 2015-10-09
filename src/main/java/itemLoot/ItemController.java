@@ -13,12 +13,15 @@ import edu.ku.it.si.bbcontent.generated.ContentWSStub.ContentVO;
 
 public class ItemController {
 
-	ArrayList<Item> itemList;
+	private ArrayList<Item> itemList;
 	
 	public void loadItems(){
 		XMLParser xml = new XMLParser();
 		itemList = xml.getItemsList();
-		System.out.println(itemList.get(0).getName());
+	}
+	
+	public ArrayList<Item> getItemList(){
+		return itemList;
 	}
 	
 	public void createItemListFromContents(ContentVO content){
@@ -76,7 +79,7 @@ public class ItemController {
 		xml += "</items>";
 		FileWriter writer;
 		try {
-			writer = new FileWriter("./src/main/resources/itemList.xml");
+			writer = new FileWriter("./resources/itemList.xml");
 			writer.write(xml);
 			writer.close();
 		} catch (IOException e) {
